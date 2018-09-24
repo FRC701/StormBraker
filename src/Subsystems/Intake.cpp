@@ -1,5 +1,4 @@
 #include "Intake.h"
-
 #include "../RobotMap.h"
 
 const char Intake::kSubsystemName[] = "Intake";
@@ -12,14 +11,14 @@ std::shared_ptr<Intake> Intake::getInstance() {
 	}
 	return self;
 }
-Intake::Intake() : frc::Subsystem("Intake") {
+Intake::Intake() : Subsystem(kSubsystemName),
 	intakeMotor(RobotMap::kIDIntakeMotor)
+{
 }
 
 void Intake::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new ::SetIntake(0.0));
 }
 
 void Intake::SetIntake(double speed){
@@ -27,5 +26,4 @@ void Intake::SetIntake(double speed){
 }
 
 bool Intake::IsIntakeOn() {
-  return intakeMotorTop.GetMotorOutputVoltage();
 }

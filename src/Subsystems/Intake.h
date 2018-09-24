@@ -8,6 +8,9 @@
 
 class Intake: public frc::Subsystem {
 private:
+	static const char kSubsystemName[];
+	static std::shared_ptr<Intake> self;
+	WPI_TalonSRX intakeMotor;
 
 public:
 	static std::shared_ptr<Intake> getInstance();
