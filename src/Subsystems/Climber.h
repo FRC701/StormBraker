@@ -1,9 +1,10 @@
 #ifndef CLIMBER_H
 #define CLIMBER_H
+
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include "ctre/Phoenix.h"
-
+#include "DoubleSolenoid.h"
 
 class Climber: public frc::Subsystem {
 private:
@@ -13,6 +14,7 @@ private:
 
 	WPI_TalonSRX rightClimber;
 	WPI_TalonSRX leftClimber;
+	DoubleSolenoid climberShifter;
 
 public:
 	static std::shared_ptr<Climber> getInstance();
@@ -20,7 +22,9 @@ public:
 
 	Climber();
 	void InitDefaultCommand() override;
-	void Periodic() override;
+	void ClimberEngage();
+	void ClimberDisengage();
+
 };
 
 #endif

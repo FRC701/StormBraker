@@ -12,6 +12,7 @@
  * floating around
  */
 class RobotMap {
+	void init();
 public:
 
 //..........Motors..........
@@ -27,16 +28,27 @@ public:
 	  static const int kIDArmMotor = 10;
 	//.........Elevator.........
 	  static const int kIDTopElevator = 7;
-	  static const int kIDBottomELevator = 7;
+	  static const int kIDBottomElevator = 7;
 
 	//........Climber.............
 	  static const int kIDRightClimber = 6;
 	  static const int kIDLeftClimber =6;
+	  static const int kIDClimberForward = 3;
+	  static const int kIDClimberReverse = 3;
 
 	//.......Claw.......
+	  static const int kIDClawForward = 3;
+	  static const int kIDClawReverse = 3;
 
 
 //..........Solenoids..........
 
 };
+
+static const int kPID_PrimaryClosedLoop = 0;
+static const int kPID_CascadedClosedLoop = 1;
+
+static const int kTimeout_10Millis = 10;
+static const int kTimeout_DontBlock = 0;
+
 #endif

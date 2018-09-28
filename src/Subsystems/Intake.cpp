@@ -22,8 +22,10 @@ void Intake::InitDefaultCommand() {
 }
 
 void Intake::SetIntake(double speed){
-	intakeMotor(speed);
+	intakeMotor.Set(speed);
 }
 
 bool Intake::IsIntakeOn() {
+
+	return false;
 }
