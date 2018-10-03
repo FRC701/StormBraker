@@ -4,6 +4,7 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include "ctre/Phoenix.h"
+#include "Commands/SetIntake.h"
 
 
 class Intake: public frc::Subsystem {
@@ -20,6 +21,7 @@ public:
 	void InitDefaultCommand();
 	void SetIntake(double speed);
 	bool IsIntakeOn();
+	bool IsCubeIn();
 
 };
 
