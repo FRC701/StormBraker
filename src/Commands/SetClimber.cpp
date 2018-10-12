@@ -15,12 +15,12 @@ void SetClimber::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SetClimber::Execute() {
-  Climber::getInstance()->Climber(mSpeed);
+  Climber::getInstance()->Climb(mSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool SetClimber::IsFinished() {
-	return OI::getInstance()->isDriverBPressed();
+	return false;
 }
 
 // Called once after isFinished returns true
@@ -31,4 +31,6 @@ void SetClimber::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void SetClimber::Interrupted() {
+
+}
 

@@ -1,4 +1,5 @@
 #include "Climber.h"
+#include "SetClimber.h"
 #include "Commands/ClimberOff.h"
 #include "../RobotMap.h"
 #include "DoubleSolenoid.h"
@@ -26,7 +27,7 @@ Climber::Climber() : Subsystem(kSubsystemName),
 }
 
 void Climber::InitDefaultCommand() {
-  SetDefaultCommand(new ClimberOff);
+	SetDefaultCommand(new SetClimber(0.0));
 }
 
 void Climber::ClimberEngage() {
@@ -37,7 +38,7 @@ void Climber::ClimberDisengage() {
 	climberShifter.Set(kClimberDisengage);
 }
 
-
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
-
+void Climber::Climb(double speed){
+  rightClimber.Set(speed);
+  leftClimber.Set(speed);
+}

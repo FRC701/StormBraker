@@ -24,6 +24,7 @@ public:
 	void InitDefaultCommand() override;
 	void ClimberEngage();
 	void ClimberDisengage();
+	void Climb(double speed);
 
 };
 
