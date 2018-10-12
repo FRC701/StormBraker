@@ -12,15 +12,30 @@ std::shared_ptr<Arm> Arm::getInstance() {
         return self;
 }
 Arm::Arm() : Subsystem(kSubsystemName),
-		  armMotor(RobotMap::kIDArmMotor)
+		armMotor(RobotMap::kIDArmMotor),
+		armPot(RobotMap::kIDArmPot)
 {
 
 }
 void Arm::InitDefaultCommand() {
 }
 
+void Arm::SetArmMove(double speed) {
+	armMotor.Set(ControlMode::PercentOutput, speed);
+}
 
+void Arm::SetArmPos(int position) {
+	armMotor.Set(ControlMode::Position, position);
+}
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+bool Arm::IsFwdLimitSwitchClosed() {
+	return armMotor.GetSensorCollection().IsFwdLimitSwitchClosed();
+}
 
+bool Arm::IsRevLimitSwitchClosed() {
+	return armMotor.GetSensorCollection().IsRevLimitSwitchClosed();
+}
+
+double Arm::GetArmPotValue() {
+	return armPot.GetValue();
+}

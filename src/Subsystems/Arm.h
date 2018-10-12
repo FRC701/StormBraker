@@ -3,6 +3,7 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include "ctre/Phoenix.h"
+#include "AnalogInput.h"
 
 
 class Arm: public frc::Subsystem {
@@ -14,12 +15,21 @@ private:
 	static std::shared_ptr<Arm> self;
 
 	WPI_TalonSRX armMotor;
+	frc::AnalogInput armPot;
 
 public:
 	static std::shared_ptr<Arm> getInstance();
 
 	Arm();
 	void InitDefaultCommand() override;
+
+	void SetArmMove(double speed);
+	void SetArmPos(int position);
+
+	bool IsFwdLimitSwitchClosed();
+	bool IsRevLimitSwitchClosed();
+
+	double GetArmPotValue();
 
 };
 
