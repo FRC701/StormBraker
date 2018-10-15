@@ -1,5 +1,5 @@
 #include "Climber.h"
-#include "SetClimber.h"
+#include "Commands/SetClimber.h"
 #include "Commands/ClimberOff.h"
 #include "../RobotMap.h"
 #include "DoubleSolenoid.h"
