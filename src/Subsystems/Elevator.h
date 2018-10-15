@@ -29,6 +29,8 @@ public:
 	bool IsFwdLimitSwitchClosed();
 	bool IsRevLimitSwitchClosed();
 
+	double GetPosError();
+
 
 };
 
