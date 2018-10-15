@@ -1,5 +1,5 @@
 #include "Climber.h"
-#include "SetClimber.h"
+#include "Commands/SetClimber.h"
 #include "Commands/ClimberOff.h"
 #include "../RobotMap.h"
 #include "DoubleSolenoid.h"
@@ -22,7 +22,7 @@ Climber::Climber() : Subsystem(kSubsystemName),
 	leftClimber(RobotMap::kIDLeftClimber),
 	climberShifter(RobotMap::kIDClimberForward, RobotMap::kIDClimberReverse)
 {
-	climberShifter.Set(DoubleSolenoid::kForward);
+	climberShifter.Set(frc::DoubleSolenoid::kForward);
 
 }
 
