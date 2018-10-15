@@ -4,6 +4,7 @@
 #include "WPILib.h"
 #include "ctre/Phoenix.h"
 #include "AnalogInput.h"
+#include <Preferences.h>
 
 
 class Arm: public frc::Subsystem {
@@ -16,6 +17,9 @@ private:
 
 	WPI_TalonSRX armMotor;
 	frc::AnalogInput armPot;
+
+	double calibrateEncoderDown;
+	double calibratePotDown;
 
 public:
 	static std::shared_ptr<Arm> getInstance();
@@ -30,6 +34,14 @@ public:
 	bool IsRevLimitSwitchClosed();
 
 	double GetArmPotValue();
+
+	double GetPos();
+	double GetPosError();
+
+	void ResetArmPos();
+	void SetArmPosDown(double potentiometer, double encoder);
+	void SetArmPosUp(double potentiometer, double encoder);
+	double CalculateEncoderPos();
 
 };
 
