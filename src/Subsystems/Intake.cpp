@@ -29,3 +29,7 @@ bool Intake::IsIntakeOn() {
 
 	return false;
 }
+bool Intake::IsCubeIn() {
+
+	return intakeMotor.GetSensorCollection().IsFwdLimitSwitchClosed();
+}
