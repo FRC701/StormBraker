@@ -37,8 +37,8 @@ OI::OI() {
 
 
     // SmartDashboard Buttons
-    frc::SmartDashboard::PutData("ArmUp", new ArmMove(1));
-    frc::SmartDashboard::PutData("ArmDown", new ArmMove(-1));
+    frc::SmartDashboard::PutData("ArmForward", new ArmMove(1));
+    frc::SmartDashboard::PutData("ArmBackward", new ArmMove(-1));
     frc::SmartDashboard::PutData("ArmPosition1", new ArmPos(1000));
     frc::SmartDashboard::PutData("ArmPosition2", new ArmPos(2000));
     frc::SmartDashboard::PutData("ElevatorPosition1", new SetElevatorPos(1000));
