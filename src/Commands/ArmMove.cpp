@@ -25,12 +25,8 @@ void ArmMove::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ArmMove::IsFinished() {
-	if (Arm::getInstance()->IsFwdLimitSwitchClosed() == true || Arm::getInstance()->IsRevLimitSwitchClosed() == true) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return Arm::getInstance()->IsFwdLimitSwitchClosed()
+		|| Arm::getInstance()->IsRevLimitSwitchClosed();
 }
 
 // Called once after isFinished returns true
