@@ -98,3 +98,7 @@ bool Elevator::IsFwdLimitSwitchClosed() {
 bool Elevator::IsRevLimitSwitchClosed() {
 	return topElevator.GetSensorCollection().IsRevLimitSwitchClosed();
 }
+
+double Elevator::GetPosError() {
+	return topElevator.GetClosedLoopError(kSlotIndex);
+}
