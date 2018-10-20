@@ -1,5 +1,8 @@
 #include "Arm.h"
 #include "../RobotMap.h"
+#include <Preferences.h>
+
+using frc::Preferences;
 
 const char Arm::kSubsystemName[] = "Arm";
 const std::string kKey = "ArmScale";
