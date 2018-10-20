@@ -26,6 +26,7 @@ public:
 	  static const int kIDIntakeMotor = 5;
 	//..........Arm..........
 	  static const int kIDArmMotor = 10;
+	  static const int kIDArmPot = 3;
 	//.........Elevator.........
 	  static const int kIDTopElevator = 7;
 	  static const int kIDBottomElevator = 7;
