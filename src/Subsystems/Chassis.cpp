@@ -21,6 +21,8 @@ Chassis::Chassis() : Subsystem(kSubsystemName),
     right1Wheel(RobotMap::kIDRight1Wheel),
     right2Wheel(RobotMap::kIDRight2Wheel)
 	{
+	left2Wheel.Follow(left1Wheel);
+	right2Wheel.Follow(right1Wheel);
 
 	}
 
