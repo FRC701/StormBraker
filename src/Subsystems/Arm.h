@@ -42,6 +42,8 @@ public:
 	void SetArmPosUp(double potentiometer, double encoder);
 	double CalculateEncoderPos();
 
+	void SetMotionMagic();
+
 };
 
 #endif

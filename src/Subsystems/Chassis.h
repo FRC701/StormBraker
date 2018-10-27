@@ -27,6 +27,8 @@ public:
 	void SetTankDrive(double left, double right);
 	void InitDefaultCommand();
 	bool IsCubeIn();
+	double GetLeftEncoderValue();
+	double GetRightEncoderValue();
 
 };
 

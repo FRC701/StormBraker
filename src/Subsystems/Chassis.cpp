@@ -15,15 +15,18 @@ std::shared_ptr<Chassis> Chassis::getInstance() {
   return self;
 }
 
+static const int kSlot0 = 0;
+
 Chassis::Chassis() : Subsystem(kSubsystemName),
     left1Wheel(RobotMap::kIDLeft1Wheel),
     left2Wheel(RobotMap::kIDLeft2Wheel),
     right1Wheel(RobotMap::kIDRight1Wheel),
     right2Wheel(RobotMap::kIDRight2Wheel)
 	{
+	right1Wheel.SetInverted(true);
+	right2Wheel.SetInverted(true);
 	left2Wheel.Follow(left1Wheel);
 	right2Wheel.Follow(right1Wheel);
-
 	}
 
 void Chassis::InitDefaultCommand() {
@@ -37,6 +40,14 @@ void Chassis::SetTankDrive(double left, double right) {
 
 bool Chassis::IsCubeIn() {
 	return ! left1Wheel.GetSensorCollection().IsRevLimitSwitchClosed();
+}
+
+double Chassis::GetLeftEncoderValue() {
+	return left1Wheel.GetSelectedSensorPosition(kSlot0);
+}
+
+double Chassis::GetRightEncoderValue() {
+	return right1Wheel.GetSelectedSensorPosition(kSlot0);
 }
 
 
