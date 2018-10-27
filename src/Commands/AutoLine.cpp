@@ -9,11 +9,13 @@
 #include "TankForward.h"
 #include "TankStop.h"
 #include "Delay.h"
+#include "ArmMove.h"
 
 AutoLine::AutoLine() {
 	AddSequential(new TankForward);
-	AddSequential(new Delay(1.5));
+	AddSequential(new Delay(0.75));
 	AddSequential(new TankStop);
+	//AddSequential(new ArmMove(0.3));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
