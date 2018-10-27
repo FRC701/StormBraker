@@ -25,7 +25,7 @@ void ArmPos::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ArmPos::IsFinished() {
-	if (abs(Arm::getInstance()->GetPosError()) < 1000
+	if (abs(Arm::getInstance()->GetPosError()) < 3000
 			|| Arm::getInstance()->IsFwdLimitSwitchClosed()
 			|| Arm::getInstance()->IsRevLimitSwitchClosed()) {
 		if (counter > 29) {

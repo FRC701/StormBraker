@@ -76,8 +76,14 @@ OI::OI()
     // SmartDashboard Buttons
     SmartDashboard::PutData("Arm Forward", new ArmMove(0.3));
     SmartDashboard::PutData("Arm Backward", new ArmMove(-0.3));
-    SmartDashboard::PutData("ArmPosition1", new ArmPos(1000));
-    SmartDashboard::PutData("ArmPosition2", new ArmPos(2000));
+    SmartDashboard::PutData("Arm Position 45", new ArmPos(45));
+    SmartDashboard::PutData("Arm Position 90", new ArmPos(90));
+    SmartDashboard::PutData("Arm Position 30", new ArmPos(30));
+    SmartDashboard::PutData("Arm Position 60", new ArmPos(60));
+    SmartDashboard::PutData("Arm Position -45", new ArmPos(-45));
+    SmartDashboard::PutData("Arm Position -90", new ArmPos(-90));
+    SmartDashboard::PutData("Arm Position -30", new ArmPos(-30));
+    SmartDashboard::PutData("Arm Position -60", new ArmPos(-60));
     SmartDashboard::PutData("ElevatorPosition1", new SetElevatorPos(1000));
     SmartDashboard::PutData("ElevatorPosition2", new SetElevatorPos(2000));
     SmartDashboard::PutData("ElevatorUp", new SetElevatorMove(1));
