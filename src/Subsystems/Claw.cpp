@@ -1,9 +1,14 @@
 #include "Claw.h"
 #include "../RobotMap.h"
 
-static frc::DoubleSolenoid::Value kClawEngage = frc::DoubleSolenoid::kForward;
-static frc::DoubleSolenoid::Value kClawDisengage = frc::DoubleSolenoid::kReverse;
+using DoubleSolenoid = frc::DoubleSolenoid;
 
+namespace {
+
+constexpr auto kClawEngage = DoubleSolenoid::kForward;
+constexpr auto kClawDisengage = DoubleSolenoid::kReverse;
+
+}
 
 const char Claw::kSubsystemName[] = "Claw";
 
@@ -20,7 +25,6 @@ Claw::Claw() : Subsystem(kSubsystemName),
 	clawSolenoid(RobotMap::kIDClawForward, RobotMap::kIDClawReverse)
 {
 	clawSolenoid.Set(DoubleSolenoid::kForward);
-
 }
 
 void Claw::InitDefaultCommand() {
