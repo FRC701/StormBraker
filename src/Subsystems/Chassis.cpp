@@ -36,7 +36,7 @@ void Chassis::SetTankDrive(double left, double right) {
 }
 
 bool Chassis::IsCubeIn() {
-	return left1Wheel.GetSensorCollection().IsRevLimitSwitchClosed();
+	return ! left1Wheel.GetSensorCollection().IsRevLimitSwitchClosed();
 }
 
 

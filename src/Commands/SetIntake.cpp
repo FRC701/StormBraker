@@ -23,6 +23,9 @@ bool SetIntake::IsFinished() {
   if(mSpeed < 0){
     return ! Chassis::getInstance()->IsCubeIn();
   }
+  else if (mSpeed == 0) {
+	  return true;
+  }
   else{
     return Chassis::getInstance()->IsCubeIn();
   }

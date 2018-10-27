@@ -25,17 +25,17 @@ public:
 	//..........Intake..........
 	  static const int kIDIntakeMotor = 5;
 	//..........Arm..........
-	  static const int kIDArmMotor = 10;
+	  static const int kIDArmMotor = 6;
 	  static const int kIDArmPot = 3;
 	//.........Elevator.........
 	  static const int kIDTopElevator = 7;
 	  static const int kIDBottomElevator = 7;
 
 	//........Climber.............
-	  static const int kIDRightClimber = 6;
-	  static const int kIDLeftClimber =6;
-	  static const int kIDClimberForward = 3;
-	  static const int kIDClimberReverse = 3;
+	  static const int kIDRightClimber = 10;
+	  static const int kIDLeftClimber =10;
+	  static const int kIDClimberForward = 10;
+	  static const int kIDClimberReverse = 10;
 
 	//.......Claw.......
 	  static const int kIDClawForward = 3;

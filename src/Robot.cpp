@@ -31,7 +31,7 @@ const void LimitSwitches(){
 }
 
 const void BannerSensors(){
-	SmartDashboard::PutBoolean("Intake Banner Sensor", Intake::getInstance()->IsCubeIn());
+	SmartDashboard::PutBoolean("Intake Banner Sensor", Chassis::getInstance()->IsCubeIn());
 }
 
 void Robot::RobotPeriodic(){
