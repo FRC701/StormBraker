@@ -1,9 +1,12 @@
 #include "Intake.h"
-#include "../RobotMap.h"
+#include "RobotMap.h"
+#include "Commands/SetIntake.h"
 
 const char Intake::kSubsystemName[] = "Intake";
 
 std::shared_ptr<Intake> Intake::self;
+
+using CommandSetIntake = SetIntake;	// Avoid collision between class name and method name
 
 std::shared_ptr<Intake> Intake::getInstance() {
 	if (! self) {
@@ -19,16 +22,13 @@ Intake::Intake() : Subsystem(kSubsystemName),
 void Intake::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
+	this->SetDefaultCommand(new CommandSetIntake(0.0));
 }
 
 void Intake::SetIntake(double speed){
 	intakeMotor.Set(speed);
 }
 
-bool Intake::IsIntakeOn() {
-
-	return false;
-}
 bool Intake::IsCubeIn() {
 
 	return intakeMotor.GetSensorCollection().IsFwdLimitSwitchClosed();
