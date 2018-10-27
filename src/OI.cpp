@@ -30,6 +30,7 @@ using SmartDashboard = frc::SmartDashboard;
 #include "Commands/Outtake.h"
 #include <Commands/SetElevatorPos.h>
 #include "Commands/SetIntake.h"
+#include "Commands/GetArmPos.h"
 
 std::shared_ptr<OI> OI::self;
 
@@ -62,7 +63,7 @@ OI::OI()
 {
 
 	coX.WhenPressed(new IntakeIn);
-	coA.WhenPressed(new ArmToggle);
+	coA.WhenPressed(new GetArmPos);
 	coRB.WhenPressed(new Outtake);
 
     // Process operator interface input here.
