@@ -21,6 +21,8 @@ Chassis::Chassis() : Subsystem(kSubsystemName),
     right1Wheel(RobotMap::kIDRight1Wheel),
     right2Wheel(RobotMap::kIDRight2Wheel)
 	{
+	left2Wheel.Follow(left1Wheel);
+	right2Wheel.Follow(right1Wheel);
 
 	}
 
@@ -31,6 +33,10 @@ void Chassis::InitDefaultCommand() {
 void Chassis::SetTankDrive(double left, double right) {
   left1Wheel.Set(left);
   right1Wheel.Set(right);
+}
+
+bool Chassis::IsCubeIn() {
+	return left1Wheel.GetSensorCollection().IsRevLimitSwitchClosed();
 }
 
 

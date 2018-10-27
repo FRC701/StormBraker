@@ -29,8 +29,14 @@ const void LimitSwitches(){
 	SmartDashboard::PutBoolean("Elevator Reverse Limit Switch", Elevator::getInstance()->IsRevLimitSwitchClosed());
 	SmartDashboard::PutBoolean("Elevator Forward Limit Switch", Elevator::getInstance()->IsFwdLimitSwitchClosed());
 }
+
 const void BannerSensors(){
 	SmartDashboard::PutBoolean("Intake Banner Sensor", Intake::getInstance()->IsCubeIn());
+}
+
+void Robot::RobotPeriodic(){
+	LimitSwitches();
+	BannerSensors();
 }
 
 void Robot::RobotInit() {

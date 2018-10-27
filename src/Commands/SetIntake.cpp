@@ -1,10 +1,11 @@
 #include "SetIntake.h"
 #include "Subsystems/Intake.h"
+#include "Subsystems/Chassis.h"
 
 SetIntake::SetIntake(double speed): mSpeed(speed) {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
-	Requires(Intake::getInstance().get());
+	Requires(Chassis::getInstance().get());
 }
 
 // Called just before this Command runs the first time
@@ -20,10 +21,10 @@ void SetIntake::Execute() {
 // Make this return true when this Command no longer needs to run execute()
 bool SetIntake::IsFinished() {
   if(mSpeed < 0){
-    return ! Intake::getInstance()->IsCubeIn();
+    return ! Chassis::getInstance()->IsCubeIn();
   }
   else{
-    return Intake::getInstance()->IsCubeIn();
+    return Chassis::getInstance()->IsCubeIn();
   }
 
 
