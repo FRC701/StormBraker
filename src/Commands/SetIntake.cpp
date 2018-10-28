@@ -20,7 +20,7 @@ void SetIntake::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool SetIntake::IsFinished() {
-  if(mSpeed < 0){
+  /*if(mSpeed < 0){
     return ! Chassis::getInstance()->IsCubeIn();
   }
   else if (mSpeed == 0) {
@@ -30,7 +30,7 @@ bool SetIntake::IsFinished() {
     return Chassis::getInstance()->IsCubeIn();
   }
 
-
+*/
 }
 
 // Called once after isFinished returns true

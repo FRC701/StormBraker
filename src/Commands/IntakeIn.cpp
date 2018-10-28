@@ -11,6 +11,7 @@
 IntakeIn::IntakeIn() {
 	AddSequential(new SetIntake(1.0));
 	AddSequential(new SetIntake(0.0));
+	//AddSequential(new SetIntake(0.0));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
