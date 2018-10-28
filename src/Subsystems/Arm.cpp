@@ -46,7 +46,8 @@ Arm::Arm() : Subsystem(kSubsystemName),
 		armMotor(RobotMap::kIDArmMotor),
 		armPot(RobotMap::kIDArmPot),
 		calibrateEncoderDown(0),
-		calibratePotDown(0)
+		calibratePotDown(0),
+		mLastPos(0)
 {
 	Arm::SetMotionMagic();
 	Arm::ResetArmPos();
@@ -60,6 +61,7 @@ void Arm::SetArmMove(double speed) {
 }
 
 void Arm::SetArmPos(int position) {
+	mLastPos = position;
 	armMotor.Set(ControlMode::MotionMagic, degreesToTicks(position));
 }
 
@@ -72,7 +74,8 @@ bool Arm::IsRevLimitSwitchClosed() {
 }
 
 double Arm::GetArmPotValue() {
-	return armPot.GetValue();
+	//return armPot.GetValue(0);
+	return 0.0;
 }
 
 double Arm::GetPos() {

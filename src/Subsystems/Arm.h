@@ -19,6 +19,7 @@ private:
 
 	double calibrateEncoderDown;
 	double calibratePotDown;
+	int mLastPos;
 
 public:
 	static std::shared_ptr<Arm> getInstance();
@@ -35,6 +36,9 @@ public:
 	double GetArmPotValue();
 
 	double GetPos();
+	int GetLastPos() {
+		return mLastPos;
+	}
 	double GetPosError();
 
 	void ResetArmPos();
