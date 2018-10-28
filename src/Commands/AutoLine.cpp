@@ -10,11 +10,16 @@
 #include "TankStop.h"
 #include "Delay.h"
 #include "ArmMove.h"
+#include "ArmPos.h"
+#include "ResetArmPos.h"
 
 AutoLine::AutoLine() {
+	AddSequential(new ArmPos(0));
+	AddSequential(new ResetArmPos);
 	AddSequential(new TankForward);
 	AddSequential(new Delay(0.75));
 	AddSequential(new TankStop);
+	AddSequential(new ArmPos(-90));
 	//AddSequential(new ArmMove(0.3));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
