@@ -5,49 +5,59 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "ArmPos.h"
+#include "PosToggle.h"
+#include "Robot.h"
 
-ArmPos::ArmPos(int position) : mPosition(position), counter(0) {
+PosToggle::PosToggle() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(Robot::arm.get());
 }
 
 // Called just before this Command runs the first time
-void ArmPos::Initialize() {
+void PosToggle::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ArmPos::Execute() {
-	Arm::getInstance()->SetArmPos(mPosition);
+void PosToggle::Execute() {
+	auto arm = Arm::getInstance();
+	auto position = arm->GetLastPos();
+
+	switch(position)
+	{
+	case -90:
+		position = -30;
+		break;
+	case -30:
+		position = -90;
+		break;
+	case 90:
+		position = 30;
+		break;
+	case 30:
+		position = 90;
+		break;
+	default:
+		position = 0;
+		break;
+	};
+
+	arm->SetArmPos(position);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ArmPos::IsFinished() {
-	if (abs(Arm::getInstance()->GetPosError()) < 3000
-			|| Arm::getInstance()->IsFwdLimitSwitchClosed()
-			|| Arm::getInstance()->IsRevLimitSwitchClosed()) {
-		if (counter > 29) {
-			return true;
-		}
-		else {
-			++counter;
-			return false;
-		}
-	}
-	else {
-		return false;
-	}
+bool PosToggle::IsFinished() {
+	return false;
 }
 
 // Called once after isFinished returns true
-void ArmPos::End() {
+void PosToggle::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ArmPos::Interrupted() {
+void PosToggle::Interrupted() {
 
 }

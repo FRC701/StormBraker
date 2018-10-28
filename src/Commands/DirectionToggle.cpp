@@ -5,49 +5,39 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "ArmPos.h"
+#include "DirectionToggle.h"
+#include "Robot.h"
 
-ArmPos::ArmPos(int position) : mPosition(position), counter(0) {
+DirectionToggle::DirectionToggle() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(Robot::arm.get());
 }
 
 // Called just before this Command runs the first time
-void ArmPos::Initialize() {
+void DirectionToggle::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ArmPos::Execute() {
-	Arm::getInstance()->SetArmPos(mPosition);
+void DirectionToggle::Execute() {
+	auto arm = Arm::getInstance();
+	arm->SetArmPos(arm->GetLastPos() * -1);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ArmPos::IsFinished() {
-	if (abs(Arm::getInstance()->GetPosError()) < 3000
-			|| Arm::getInstance()->IsFwdLimitSwitchClosed()
-			|| Arm::getInstance()->IsRevLimitSwitchClosed()) {
-		if (counter > 29) {
-			return true;
-		}
-		else {
-			++counter;
-			return false;
-		}
-	}
-	else {
-		return false;
-	}
+bool DirectionToggle::IsFinished() {
+	return false;
 }
 
 // Called once after isFinished returns true
-void ArmPos::End() {
+void DirectionToggle::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ArmPos::Interrupted() {
+void DirectionToggle::Interrupted() {
 
 }

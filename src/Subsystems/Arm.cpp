@@ -10,7 +10,7 @@ const char Arm::kSubsystemName[] = "Arm";
 const std::string kKey = "ArmScale";
 const std::string kKeyPot = "ArmPotBottom";
 
-static const double kMaxFwdEncoderPos = 1000.0;
+static const double kMaxFwdEncoderPos = 26500.0;
 static const double kMaxPercentVBus = 0.3;	// Maximum percent to apply to the motor.
 											// The low value is safety and speed of the arm.
 // Determine max velocity by measuring units per 100ms as the arm is moving
@@ -38,11 +38,16 @@ static double calcP() {
 	return pGain;
 }
 
+double degreesToTicks(int degrees) {
+	return kMaxFwdEncoderPos*degrees/90;
+}
+
 Arm::Arm() : Subsystem(kSubsystemName),
 		armMotor(RobotMap::kIDArmMotor),
 		armPot(RobotMap::kIDArmPot),
 		calibrateEncoderDown(0),
-		calibratePotDown(0)
+		calibratePotDown(0),
+		mLastPos(0)
 {
 	Arm::SetMotionMagic();
 	Arm::ResetArmPos();
@@ -56,7 +61,8 @@ void Arm::SetArmMove(double speed) {
 }
 
 void Arm::SetArmPos(int position) {
-	armMotor.Set(ControlMode::Position, position);
+	mLastPos = position;
+	armMotor.Set(ControlMode::MotionMagic, degreesToTicks(position));
 }
 
 bool Arm::IsFwdLimitSwitchClosed() {
@@ -68,7 +74,8 @@ bool Arm::IsRevLimitSwitchClosed() {
 }
 
 double Arm::GetArmPotValue() {
-	return armPot.GetValue();
+	//return armPot.GetValue(0);
+	return 0.0;
 }
 
 double Arm::GetPos() {
